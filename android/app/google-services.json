@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "283968620955",
+    "project_id": "donut-delivery-316e4",
+    "storage_bucket": "donut-delivery-316e4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283968620955:android:a97eebc1d2667f36c6393e",
+        "android_client_info": {
+          "package_name": "com.example.donutApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCho0zHhMqUVft-HxSrQy7VNdom26F1Ee0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
