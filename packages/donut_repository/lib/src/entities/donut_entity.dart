@@ -14,6 +14,20 @@ String _requiredString(
   );
 }
 
+bool _requiredBool(
+  Map<String, dynamic> doc,
+  String field,
+  String documentId,
+) {
+  final value = doc[field];
+  if (value is bool) return value;
+  throw FormatException(
+    'Expected "$field" to be a bool in donut document "$documentId"; '
+    'got ${value == null ? 'null' : value.runtimeType}. '
+    'Available fields: ${doc.keys.join(', ')}',
+  );
+}
+
 class DonutEntity {
   String donutId;
   String picture;
@@ -58,8 +72,8 @@ class DonutEntity {
     return DonutEntity(
       donutId: doc['donutId'] as String? ?? documentId,
       picture: _requiredString(doc, 'picture'),
-      isFilled: doc['isFilled'],
-      isGlazed: doc['isGlazed'],
+      isFilled: _requiredBool(doc, 'isFilled', documentId),
+      isGlazed: _requiredBool(doc, 'isGlazed', documentId),
       name: _requiredString(doc, 'name'),
       description: _requiredString(
         doc,
