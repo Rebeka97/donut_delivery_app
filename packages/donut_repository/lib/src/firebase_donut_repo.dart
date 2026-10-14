@@ -4,6 +4,7 @@ import 'package:donut_repository/donut_repository.dart';
 class FirebaseDonutRepo implements DonutRepo {
   final donutCollection = FirebaseFirestore.instance.collection('donuts');
 
+  @override
   Stream<List<Donut>> getDonuts() {
     return donutCollection.snapshots().map(
       (snapshot) => snapshot.docs

@@ -21,10 +21,17 @@ class FirebaseUserRepo implements UserRepository {
       if (firebaseUser == null) {
         yield MyUser.empty;
       } else {
-        yield await userCollection.doc(firebaseUser.uid)
-        .get()
-        .then((value) => MyUser.fromEntity(MyUserEntity.fromDocument(value.data()!))
-        );
+        try {
+          final doc = await userCollection.doc(firebaseUser.uid).get();
+          if (doc.data() == null) {
+            yield MyUser.empty;
+          } else {
+            yield MyUser.fromEntity(MyUserEntity.fromDocument(doc.data()!));
+          }
+        } catch (e) {
+          log(e.toString());
+          yield MyUser.empty;
+        }
       }
     });
   }
