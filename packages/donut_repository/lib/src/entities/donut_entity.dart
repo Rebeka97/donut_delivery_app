@@ -6,19 +6,15 @@ String _requiredString(
   String field, {
   String? alternateField,
 }) {
-  final value = doc[field] ??
-      (alternateField == null ? null : doc[alternateField]);
+  final value =
+      doc[field] ?? (alternateField == null ? null : doc[alternateField]);
   if (value is String) return value;
   throw FormatException(
     'Expected "$field" to be a string. Available fields: ${doc.keys.join(', ')}',
   );
 }
 
-bool _requiredBool(
-  Map<String, dynamic> doc,
-  String field,
-  String documentId,
-) {
+bool _requiredBool(Map<String, dynamic> doc, String field, String documentId) {
   final value = doc[field];
   if (value is bool) return value;
   throw FormatException(
@@ -65,10 +61,7 @@ class DonutEntity {
     };
   }
 
-  static DonutEntity fromDocument(
-    Map<String, dynamic> doc,
-    String documentId,
-  ) {
+  static DonutEntity fromDocument(Map<String, dynamic> doc, String documentId) {
     return DonutEntity(
       donutId: doc['donutId'] as String? ?? documentId,
       picture: _requiredString(doc, 'picture'),

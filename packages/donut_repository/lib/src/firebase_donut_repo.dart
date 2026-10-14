@@ -2,7 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:donut_repository/donut_repository.dart';
 
 class FirebaseDonutRepo implements DonutRepo {
-  final donutCollection = FirebaseFirestore.instance.collection('donuts');
+  static const String collectionName = 'donuts';
+  final donutCollection = FirebaseFirestore.instance.collection(collectionName);
 
   @override
   Stream<List<Donut>> getDonuts() {

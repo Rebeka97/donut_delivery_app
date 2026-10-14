@@ -25,7 +25,7 @@ class Donut {
     required this.macros,
   });
 
-    DonutEntity toEntity() {
+  DonutEntity toEntity() {
     return DonutEntity(
       donutId: donutId,
       picture: picture,
