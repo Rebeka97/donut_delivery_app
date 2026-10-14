@@ -7,6 +7,4 @@ sealed class GetDonutEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class GetDonut extends GetDonutEvent {
-  
-}
+class GetDonut extends GetDonutEvent {}

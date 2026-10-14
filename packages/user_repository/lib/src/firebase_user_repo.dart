@@ -9,13 +9,13 @@ import 'package:rxdart/rxdart.dart';
 
 class FirebaseUserRepo implements UserRepository {
   final FirebaseAuth _firebaseAuth;
-  final userCollection = FirebaseFirestore.instance.collection('users');
+  static const String collectionName = 'users';
+  final userCollection = FirebaseFirestore.instance.collection(collectionName);
 
-  FirebaseUserRepo({
-    FirebaseAuth? firebaseAuth,
-  }) : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
+  FirebaseUserRepo({FirebaseAuth? firebaseAuth})
+    : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
 
- @override
+  @override
   Stream<MyUser> get user {
     return _firebaseAuth.authStateChanges().flatMap((firebaseUser) async* {
       if (firebaseUser == null) {
@@ -36,7 +36,7 @@ class FirebaseUserRepo implements UserRepository {
     });
   }
 
- @override
+  @override
   Future<void> signIn(String email, String password) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
@@ -74,13 +74,11 @@ class FirebaseUserRepo implements UserRepository {
   Future<void> setUserData(MyUser myUser) async {
     try {
       await userCollection
-      .doc(myUser.userId)
-      .set(myUser.toEntity().toDocument());
+          .doc(myUser.userId)
+          .set(myUser.toEntity().toDocument());
     } catch (e) {
       log(e.toString());
       rethrow;
     }
   }
-
-
 }
