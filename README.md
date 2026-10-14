@@ -27,12 +27,12 @@ Welcome to the Donut Delivery repository! This is a modern mobile/web applicatio
 - <b>Phase 3 (In Progress / Upcoming):</b>Shopping cart management, order placement, and checkout flow.
 
 <h2>Tech Stack & Backend</h2>
-- Framework: Flutter (Dart)
+Framework: Flutter (Dart)
 <br>
-- Backend & Services: Firebase (Authentication, Storage)
+Backend & Services: Firebase (Authentication, Storage)
 <br>
-- Design & Assets: Custom UI/UX graphics, Figma-inspired styling
+Design & Assets: Custom UI/UX graphics, Figma-inspired styling
 <br>
 <br>
 
-Additionally, the ecosystem includes a companion <i>donuts_admin_app</i> designed for administrators to seamlessly manage and upload new donuts and their detailed contents directly to Firebase.
+Additionally, the ecosystem includes a companion <i>donut_admin_app</i> designed for administrators to seamlessly manage and upload new donuts and their detailed contents directly to Firebase.
